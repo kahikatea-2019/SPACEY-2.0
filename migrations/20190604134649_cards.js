@@ -7,8 +7,8 @@ exports.up = function(knex, Promise) {
       table.string('answer')
       table.integer('dateCreated')
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTable('cards')
-};
+}

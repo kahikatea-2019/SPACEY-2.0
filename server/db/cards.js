@@ -3,8 +3,19 @@ const config = require('../db/knexfile')[enviornment]
 const connection = require('knex')(config)
 
 module.exports = {
-    getCards,
+    getCard,
+    addCard
 
 }
 
-function getCards ()
+function getCard (id, db = connection) {
+    return db('cards')
+    .where('userId', id )
+    .first()
+}
+
+function addCard (newCard, db = connection) {
+    return db('cards')
+    .insert(newCard)
+}
+
