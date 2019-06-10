@@ -12,4 +12,9 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get()
+router.get('/:id', (req, res) => {
+  const id = req.params.id
+  db.getCategrory(id)
+    .then(category => res.send(category))
+    .catch(err => res.status(500).send(err.message))
+})
