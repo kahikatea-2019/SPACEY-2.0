@@ -3,7 +3,8 @@ const config = require('../db/knexfile')[environment]
 const connection = require('knex')(config)
 
 module.exports = {
-
+addCategory,
+getCategrory
 }
 
 function addCategory (newCategory db = connection) {
@@ -18,3 +19,8 @@ function getCategory (id , db = connection) {
   .first()
 }
 
+function deleteCategory (id, db = connection) {
+  return db('categories')
+  .where('id', id)
+  .del()
+}
