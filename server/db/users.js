@@ -3,7 +3,8 @@ const config = require('../db/knexfile')[environment]
 const connection = require('knex')('config')
 
 module.exports = {
-userExists,
+  userExists,
+  getUserbyId
 
 }
 
@@ -16,4 +17,16 @@ function userExists (username, db = connection) {
     })
 }
 
-function getUserbyId
+function getUserbyId (id, db = connection) {
+  return db('users')
+    .select('id', 'username')
+    .where('id', id)
+    .first()
+}
+
+function getUserByName (username, db = connection) {
+  return db('users')
+    .select()
+    .where('username', username)
+    .first
+}
