@@ -29,3 +29,21 @@ function register (req, res, next) {
       })
     })
 }
+
+function signIn (req, res, next) {
+  getUserByName(req.body.username)
+  .then(user =. {
+    return user || invaildCredentials(res)
+  })
+  .then(user => {
+    return user && hash.verify(user.hash, req.body.password)
+  })
+  .then(isValid => {
+    return isVaild ? next(): invalidCredientials(res)
+  })
+  .catch(() => {
+    res.status(400).send({
+  errorType: 'DATABASE_ERROR'
+    })
+  })
+}
