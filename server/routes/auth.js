@@ -47,3 +47,11 @@ function signIn (req, res, next) {
     })
   })
 }
+
+function invaildCredentials (res) {
+  res.status(400).send({
+    errorType: 'INVALID_CREDENTIALS'
+  })
+}
+
+module.exports = router
