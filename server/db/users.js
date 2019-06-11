@@ -4,8 +4,8 @@ const connection = require('knex')('config')
 
 module.exports = {
   userExists,
-  getUserbyId
-
+  getUserbyId,
+  getUserByName
 }
 
 function userExists (username, db = connection) {
