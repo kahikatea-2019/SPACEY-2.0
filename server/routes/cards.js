@@ -22,3 +22,17 @@ router.get('/', (req, res) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
+
+router.put('/:id', (req, res) => {
+  const updatedCard = {
+    id: req.params.id,
+    check1: req.body.check1,
+    check2: req.body.check2,
+    check3: req.body.check3
+  }
+  db.updateCard(updatedCard)
+    .then(() => res.json({ notice: 'evidence has been updated! ' }))
+    .catch(err => res.status(500).send(err.message))
+})
+
+module.exports = router
